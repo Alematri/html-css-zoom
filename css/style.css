@@ -1,15 +1,28 @@
+:root{
+  --main-font: 'Lato', sans-serif;
+  --black: black;
+  --light-grey: #494949;
+  --dark-grey: #222222;
+  --active-color: #4BC800;
+}
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
+  font-family: var(--main-font)
 }
 
 body{
-  font-family: sans-serif;
   color: white;
   background-color: black;
 }
+
+/* .debug{
+  border: 1px solid rgb(255, 0, 0);
+  background-color: rgba (255, 0, 0, .2);
+} */
 
 /* UTILITY */
 
@@ -42,65 +55,59 @@ body{
   justify-content: space-between;
 }
 
-/* .debug{
-  border: 1px solid rgb(255, 0, 0);
-  background-color: rgba (255, 0, 0, .2);
-} */
-
 .big-icon{
   font-size: 20px;
-}
-
-/* COLORS */
-
-.darkgrey{
-  background-color: #222222;
 }
 
 .grey{
   background-color: rgba(0, 0, 0, .35);
 }
 
-.black{
-  background-color: black;
-}
-
-.white{
-  background-color: white;
-}
-
-.green{
-  color: green;
-}
-
-.red{
-  color: red;
-}
-
 /* MAIN */
 
 .top-block{
   height: 65px;
+  text-align: right;
+  padding: 5px;
 }
 
 .main-block{
   height: calc(100vh - 140px);
   overflow: auto;
   flex-wrap: wrap;
-  padding: 0 0 0px 50px;
+  align-content: flex-start;
+  justify-content: center;
+  overflow-y: auto;
 }
 
 .bottom-bar{
   height: 75px;
 }
 
+.top-block button{
+  background-color: var(--light-grey);
+  color: white;
+  border: 0;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 /* USERS */
 
 .main-block .user{
-  display: inline-block;
-  margin-right: 4px;
-  margin-bottom: 8px;
   position: relative;
+  width: 300px;
+  height: 200px;
+  border: 3px solid black;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.user img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .user .microp-user{
@@ -112,22 +119,50 @@ body{
 
 /* BOTTOM BAR */
 
-.end-meeting p{
+.bottom-bar{
+  background-color: var(--dark-grey);
+  display: flex;
+}
+
+.bar-left, .bar-center, .bar-right{
+  height: 100%;
+}
+
+.bottom-bar .icon-btn{
+  padding: 10px;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+}
+
+.bottom-bar .end-meeting p{
   line-height: 75px;
   background-color: #4A4A4A;
   color: red;
   padding: 0 15px;
+  cursor: pointer;
 }
 
-.icon-btn, .big-icon, .fa-angle-up, a{
-  text-align: center;
+.icon-btn i{
+  font-size: 1.8rem;
+}
+
+.bottom-bar .fa-angle-up{
+  font-size: 1rem;
+  cursor: pointer;
   align-self: center;
 }
 
-.icon-btn{
-  margin: 0 10px;
+.icon-btn.active i{
+  color: var(--active-color);
 }
 
-.bottom-bar a{
-  color: white;
+.icon-btn:hover i, .icon-btnactive i{
+  color: var(--active-color);
+}
+
+.bar-left, .bar-center{
+  flex-shrink: 0;
 }
